@@ -17,7 +17,7 @@ The implementation of this function can be seen in the included files. The main.
 as well as add the delay between the pin toggles in the while loop. There main.h file contains the initialization of the pin using the existing HAL provided
 for the board. These make it easy to change the pins linked to the LED as referenced by the manual. 
 
-Due to some issues with a cable not being able to connect to the board, the button implementation still needs to finished. This will be done tomorrow after class. I wanted to submit what I had for the evening before class.
+After speaking with a mentor during office hours, I was able to figure out a method to implement the push button interrupt using the generation from the .ioc file. After digging around in the stm32f4xx_it.c file I was able to find the interrupt handler and use the void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) function which is called by the interrupt handler. There I implemented code that would set the LED pin off and then toggle a variable used to keep track of the button state called B1State. Code can be found in the [Blinky/Core/Src](https://github.com/brhe4981/MakingEmbeddedSystemsClass/tree/main/Blinky/Core/Src) directory. 
 
 
 - What are the hardware registers that cause the LED to turn on and off? (From the
