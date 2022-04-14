@@ -21,7 +21,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+static int B1State = 0;
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -93,15 +93,18 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-	  HAL_GPIO_TogglePin(GRN_LED_PORT,GRN_LED_PIN);//Toggle the pin used for the green led
-	  HAL_Delay(200);//delay 200ms
+	  if (B1State == 0){//check if the button was pressed
+		  HAL_GPIO_TogglePin(GRN_LED_PORT,GRN_LED_PIN);//Toggle the pin used for the green led
+		  	  HAL_Delay(200);//delay 200ms
+	  }
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
 }
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
-	if (GPIO_Pin){
-
+	HAL_GPIO_WritePin(GRN_LED_PORT, GRN_LED_PIN, GPIO_PIN_RESET);//turn the LED off
+	if (GPIO_Pin == 1){
+		B1State = !B1State;//toggle the button state
 	}
 }
 /**
