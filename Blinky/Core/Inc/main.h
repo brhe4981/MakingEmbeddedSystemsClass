@@ -243,6 +243,7 @@ void Error_Handler(void);
 /* USER CODE BEGIN Private defines */
 #define GRN_LED_PIN GPIO_PIN_13//Pin 13 is connected to the green LED from manual
 #define GRN_LED_PORT GPIOG//Port is G from manual
+
 /* USER CODE END Private defines */
 
 #ifdef __cplusplus
